@@ -45,7 +45,14 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
         } else if (item.getItemId() == R.id.nav_orders) {
             startActivity(new Intent(this, OrderActivity.class));
             overridePendingTransition(0, 0);
+        } else if (item.getItemId() == R.id.nav_share) {
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            String shareMessage = "Hey! Check out this awesome app! :D";
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+            startActivity(Intent.createChooser(shareIntent, "Share App"));
         }
+
 
         return false;
     }
